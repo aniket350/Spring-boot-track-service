@@ -5,6 +5,7 @@ import com.stackroute.exception.TrackAlreadyExistsException;
 import com.stackroute.exception.TrackNotFoundException;
 import com.stackroute.repository.TrackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Qualifier("trackServiceImpl")
 public class TrackServiceImpl implements TrackService {
 
     private TrackRepository trackRepository;
@@ -23,10 +25,11 @@ public class TrackServiceImpl implements TrackService {
         this.trackRepository = trackRepository;
     }
 
+
     @Override
     public Track saveTrack(Track track) throws TrackAlreadyExistsException {
         if (trackRepository.existsById(track.getId())) {
-            throw new TrackAlreadyExistsException("Track already exits");
+            throw new TrackAlreadyExistsException("Track in TrackServiceImplementation already exits");
         }
         if (track == null) {
                 throw new TrackAlreadyExistsException("Given null value");

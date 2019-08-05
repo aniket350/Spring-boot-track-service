@@ -14,5 +14,3 @@ public interface TrackRepository extends JpaRepository<Track,Integer> {
     @Query("UPDATE Track a SET a.comments =?2 Where a.name=?1")
     Track getUpdateByName(String name, String comment);
 }
-
-
