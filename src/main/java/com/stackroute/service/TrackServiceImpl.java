@@ -6,6 +6,7 @@ import com.stackroute.exception.TrackNotFoundException;
 import com.stackroute.repository.TrackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Qualifier("trackServiceImpl")
+@Profile("main")
 public class TrackServiceImpl implements TrackService {
 
     private TrackRepository trackRepository;
@@ -57,12 +58,12 @@ public class TrackServiceImpl implements TrackService {
         return deletedTrack;
         }
 
-
         @Override
-        public List<Track> getTrackByName (String str){
+        public List<Track> getTrackByName (String str) {
             List<Track> trackByName = trackRepository.getByName(str);
             return (List<Track>) trackByName;
         }
+
         @Override
         public Track getUpdateByName (String name, String comment){
             Track updatedTrack = trackRepository.getUpdateByName(name, comment);
@@ -71,7 +72,6 @@ public class TrackServiceImpl implements TrackService {
 
         @Override
         public List<Track> getAllTracks() {
-
-            return trackRepository.findAll();
+        return trackRepository.findAll();
         }
 }

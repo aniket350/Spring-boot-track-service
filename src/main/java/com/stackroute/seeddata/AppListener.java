@@ -25,6 +25,8 @@ public class AppListener implements ApplicationListener<ContextRefreshedEvent> {
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         Track track = new Track(10,"hagc","shcwihdi");
+        Track track1 = new Track(50, "India", "mere desh ki dharti");
+        trackRepository.save(track1);
         trackRepository.save(track);
     }
 }

@@ -9,8 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Profile;
 
 import java.util.List;
-@Profile("development")
-@Qualifier("trackdummy")
+@Profile("dummy")
 public class TrackDummyServiceImpl implements TrackService {
     private TrackRepository trackRepository;
     @Autowired
