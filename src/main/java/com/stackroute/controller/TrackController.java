@@ -76,6 +76,7 @@ public class TrackController {
         }
         return responseEntity;
     }
+    //Mapping using method getTrackByName
     @GetMapping("tracks/{name}")
     public ResponseEntity<?> getTrackByName(@PathVariable String str){
         List<Track> trackByName = trackService.getTrackByName(str);
