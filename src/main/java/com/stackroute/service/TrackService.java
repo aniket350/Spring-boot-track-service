@@ -1,13 +1,22 @@
 package com.stackroute.service;
 
 import com.stackroute.domain.Track;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.stackroute.exception.TrackAlreadyExistsException;
+import com.stackroute.exception.TrackNotFoundException;
 
-public interface TrackService extends JpaRepository<Track,Integer>
+import java.util.List;
+
+public interface TrackService
 {
-    public Track saveTrack(Track track);
+    public Track saveTrack(Track track) throws TrackAlreadyExistsException;
 
-    public Track getTrackById(int id);
+    public Track getTrackById(int id) throws TrackNotFoundException;
 
-    public Track deleteTrackById(int id);
+    public Track getDeleteTrackById(int id) throws  TrackNotFoundException;
+
+    public List<Track> getTrackByName(String name);
+
+    public Track getUpdateByName(String name, String comment);
+
+    public  List<Track> getAllTracks();
 }
