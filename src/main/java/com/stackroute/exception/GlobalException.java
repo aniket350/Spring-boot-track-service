@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
+//Handling all global exception
 public class GlobalException {
 
     @ExceptionHandler(TrackNotFoundException.class)

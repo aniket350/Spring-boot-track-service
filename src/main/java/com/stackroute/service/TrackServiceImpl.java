@@ -17,9 +17,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+//Profile annotation gives first priority from where in all services this service will get executed first
 @Profile("main")
 public class TrackServiceImpl implements TrackService {
 
+    //Initializing trackrepository as we are going from trackrepository from trackService
     private TrackRepository trackRepository;
     @Autowired
     public TrackServiceImpl(TrackRepository trackRepository) {

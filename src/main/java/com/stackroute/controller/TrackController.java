@@ -14,6 +14,7 @@ import javax.persistence.PostUpdate;
 import java.util.List;
 
 @RestController
+//Mapping the url with api and its version which is common for all query tracks
 @RequestMapping("api/v1/")
 
 public class TrackController {
@@ -69,7 +70,7 @@ public class TrackController {
 //        }
         return responseEntity;
     }
-
+//Mapping with tracks to get all tracks at a time
     @GetMapping("tracks")
     public ResponseEntity<?> getAllTracks() {
         ResponseEntity responseEntity;
@@ -93,7 +94,6 @@ public class TrackController {
         @PatchMapping("track/{name}")
         public ResponseEntity<?> getupdateById (@PathVariable String name, @RequestBody String comment)
         {
-
             Track updatedTrack = trackService.getUpdateByName(name, comment);
             return new ResponseEntity<>(updatedTrack, HttpStatus.OK);
         }

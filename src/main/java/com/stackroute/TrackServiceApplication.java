@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
+//PropertySource is used to tell main file to start with particular mentioned files
 @PropertySource("application-prod.properties")
 public class TrackServiceApplication {
 
