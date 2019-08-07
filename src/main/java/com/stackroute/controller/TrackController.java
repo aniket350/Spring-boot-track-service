@@ -1,5 +1,5 @@
 package com.stackroute.controller;
-
+import com.stackroute.service.TrackService;
 import com.stackroute.domain.Track;
 import com.stackroute.exception.TrackAlreadyExistsException;
 import com.stackroute.exception.TrackNotFoundException;
@@ -14,7 +14,6 @@ import javax.persistence.PostUpdate;
 import java.util.List;
 
 @RestController
-//Mapping the url with api and its version which is common for all query tracks
 @RequestMapping("api/v1/")
 
 public class TrackController {
@@ -70,7 +69,7 @@ public class TrackController {
 //        }
         return responseEntity;
     }
-//Mapping with tracks to get all tracks at a time
+
     @GetMapping("tracks")
     public ResponseEntity<?> getAllTracks() {
         ResponseEntity responseEntity;
@@ -83,23 +82,19 @@ public class TrackController {
 //            ex.printStackTrace();
 //        }
 
-        //Mapping using method getTrackByName
-        @GetMapping("tracks/{name}")
-        public ResponseEntity<?> getTrackByName (@PathVariable String str){
-            ResponseEntity responseEntity1;
-            trackService.getTrackByName(str);
-            responseEntity1 = new ResponseEntity<>(trackService.getTrackByName(str), HttpStatus.OK);
-            return responseEntity1;
-        }
-        @PutMapping("track/{name}")
-        public ResponseEntity<?> getupdateById (@PathVariable String name, @RequestBody String comment)
-        {
-            ResponseEntity responseEntity;
-            trackService.getUpdateByName(name, comment);
-            responseEntity = new ResponseEntity<>(trackService.getUpdateByName(name, comment), HttpStatus.OK);
-            return responseEntity;
-        }
+    //Mapping using method getTrackByName
+    @GetMapping("tracks/{name}")
+    public ResponseEntity<?> getTrackByName (@PathVariable String str){
+        ResponseEntity responseEntity1;
+        trackService.getTrackByName(str);
+        responseEntity1 = new ResponseEntity<>(trackService.getTrackByName(str), HttpStatus.OK);
+        return responseEntity1;
     }
+    @PatchMapping("track/{name}")
+    public ResponseEntity<?> getupdateById (@PathVariable String name, @RequestBody String comment)
+    {
 
-
-
+        Track updatedTrack = trackService.getUpdateByName(name, comment);
+        return new ResponseEntity<>(updatedTrack, HttpStatus.OK);
+    }
+}

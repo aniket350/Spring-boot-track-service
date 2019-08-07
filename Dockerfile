@@ -3,3 +3,6 @@ ADD ./target/track-service-0.0.1-SNAPSHOT.jar /usr/src/track-service-0.0.1-SNAPS
 EXPOSE 8081
 WORKDIR usr/src
 ENTRYPOINT ["java","-jar","track-service-0.0.1-SNAPSHOT.jar"]
+
+
+
