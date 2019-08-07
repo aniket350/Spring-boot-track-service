@@ -91,11 +91,13 @@ public class TrackController {
             responseEntity1 = new ResponseEntity<>(trackService.getTrackByName(str), HttpStatus.OK);
             return responseEntity1;
         }
-        @PatchMapping("track/{name}")
+        @PutMapping("track/{name}")
         public ResponseEntity<?> getupdateById (@PathVariable String name, @RequestBody String comment)
         {
-            Track updatedTrack = trackService.getUpdateByName(name, comment);
-            return new ResponseEntity<>(updatedTrack, HttpStatus.OK);
+            ResponseEntity responseEntity;
+            trackService.getUpdateByName(name, comment);
+            responseEntity = new ResponseEntity<>(trackService.getUpdateByName(name, comment), HttpStatus.OK);
+            return responseEntity;
         }
     }
 
