@@ -16,7 +16,7 @@ public interface TrackService
 
     public List<Track> getTrackByName(String name);
 
-    public Track getUpdateByName(String name, String comment);
+    public Track getUpdateTrackById(Track track, int id);
 
     public  List<Track> getAllTracks();
 }

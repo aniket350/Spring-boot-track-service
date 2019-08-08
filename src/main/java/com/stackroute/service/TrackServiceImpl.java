@@ -64,14 +64,15 @@ public class TrackServiceImpl implements TrackService {
 
     @Override
     public List<Track> getTrackByName (String str) {
-        List<Track> trackByName = trackRepository.getByName(str);
+        List<Track> trackByName = trackRepository.findByName(str);
         return (List<Track>) trackByName;
     }
 
     @Override
-    public Track getUpdateByName (String name, String comment){
-        Track updatedTrack = trackRepository.getUpdateByName(name, comment);
-        return updatedTrack;
+    public Track getUpdateTrackById (Track track, int id){
+        Optional<Track> optionalTrack = trackRepository.findById(id);
+        trackRepository.deleteById(id);
+        return trackRepository.save(track);
     }
 
     @Override

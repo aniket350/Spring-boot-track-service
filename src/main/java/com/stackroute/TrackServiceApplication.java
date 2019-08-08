@@ -7,7 +7,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
 //PropertySource is used to tell main file to start with particular mentioned files
-@PropertySource("application-prod.properties")
+//@PropertySource("application-prod.properties")
 public class TrackServiceApplication {
 
     public static void main(String[] args) { SpringApplication.run(TrackServiceApplication.class, args);

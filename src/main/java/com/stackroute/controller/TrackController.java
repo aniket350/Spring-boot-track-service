@@ -56,12 +56,11 @@ public class TrackController {
         return responseEntity;
     }
 
-    @GetMapping("deletetrack/{id}")
+    @DeleteMapping("deletetrack/{id}")
     public ResponseEntity<?> getDeleteTrackById(@PathVariable int id) throws TrackNotFoundException {
         ResponseEntity responseEntity;
-
         trackService.getDeleteTrackById(id);
-        responseEntity = new ResponseEntity("Sucessfully Deleted", HttpStatus.OK);
+        responseEntity = new ResponseEntity("Sucessfully Deleted", HttpStatus.CREATED);
 
 //            catch (TrackNotFoundException ex){
 //            responseEntity = new ResponseEntity(ex.getMessage(),HttpStatus.NOT_FOUND);
@@ -91,10 +90,11 @@ public class TrackController {
         return responseEntity1;
     }
     @PatchMapping("track/{name}")
-    public ResponseEntity<?> getupdateById (@PathVariable String name, @RequestBody String comment)
+    public ResponseEntity<?> getupdateTrackById (@RequestBody Track track, @PathVariable("id") int id)
     {
 
-        Track updatedTrack = trackService.getUpdateByName(name, comment);
+        Track updatedTrack = trackService.getUpdateTrackById(track,id);
         return new ResponseEntity<>(updatedTrack, HttpStatus.OK);
     }
+
 }
